@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hello India Cellular – Serving Since 2004</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1f44;
+  --blue: #1a4db5;
+  --sky: #2f80ed;
+  --accent: #e8a020;
+  --gold: #f5c842;
+  --white: #ffffff;
+  --offwhite: #f4f7fc;
+  --light: #dbe8fb;
+  --muted: #6b7fa3;
+  --dark: #071330;
+  --text: #1c2a45;
+  --card-shadow: 0 8px 40px rgba(10,31,68,0.10);
+  --radius: 14px;
+  --transition: 0.32s cubic-bezier(.4,0,.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--offwhite); }
+::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  background: rgba(10,31,68,0.96);
+  backdrop-filter: blur(14px);
+  padding: 0 5vw;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 66px;
+  border-bottom: 1.5px solid rgba(47,128,237,0.18);
+  transition: box-shadow var(--transition);
+}
+nav.scrolled { box-shadow: 0 4px 32px rgba(10,31,68,0.28); }
+
+.nav-logo {
+  display: flex; align-items: center; gap: 10px; text-decoration: none;
+}
+.nav-logo-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: linear-gradient(135deg,var(--sky),var(--accent));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.nav-logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--white); letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+.nav-logo-text span { color: var(--gold); }
+.nav-logo-sub { font-size: 0.62rem; color: var(--light); letter-spacing: 0.08em; font-weight: 400; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 6px; list-style: none;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.78);
+  text-decoration: none; font-size: 0.87rem; font-weight: 500;
+  padding: 7px 13px; border-radius: 8px;
+  transition: all var(--transition);
+}
+.nav-links a:hover { color: var(--white); background: rgba(47,128,237,0.18); }
+
+.nav-cta {
+  background: linear-gradient(135deg,var(--sky),var(--blue)) !important;
+  color: var(--white) !important;
+  padding: 8px 18px !important; border-radius: 8px !important;
+}
+.nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  padding: 5px;
+}
+.hamburger span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--transition); }
+
+.mobile-menu {
+  display: none; position: fixed; top: 66px; left: 0; right: 0; z-index: 899;
+  background: var(--navy);
+  padding: 16px 5vw 24px;
+  border-bottom: 1.5px solid rgba(47,128,237,0.18);
+  flex-direction: column; gap: 4px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: rgba(255,255,255,0.85); text-decoration: none;
+  font-size: 1rem; font-weight: 500; padding: 11px 14px; border-radius: 8px;
+  transition: all var(--transition);
+}
+.mobile-menu a:hover { background: rgba(47,128,237,0.18); color: var(--white); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100svh;
+  background: linear-gradient(160deg, var(--dark) 0%, var(--navy) 45%, #0d2f6e 100%);
+  display: flex; align-items: center; justify-content: center;
+  padding: 100px 5vw 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 65% 40%, rgba(47,128,237,0.22) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 50% at 20% 80%, rgba(232,160,32,0.10) 0%, transparent 60%);
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  max-width: 1200px; width: 100%; align-items: center; position: relative; z-index: 1;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(47,128,237,0.18); border: 1px solid rgba(47,128,237,0.38);
+  color: var(--light); font-size: 0.78rem; font-weight: 600;
+  padding: 6px 14px; border-radius: 100px; letter-spacing: 0.08em;
+  margin-bottom: 22px; text-transform: uppercase;
+}
+.hero-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 900; line-height: 1.12;
+  color: var(--white); margin-bottom: 10px;
+}
+.hero h1 span { color: var(--gold); }
+.hero-tagline {
+  font-size: clamp(1rem, 2vw, 1.25rem); color: var(--light);
+  font-weight: 300; margin-bottom: 18px; line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+.hero-sub {
+  font-size: 0.9rem; color: var(--muted); margin-bottom: 36px;
+}
+
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  background: linear-gradient(135deg,var(--sky),var(--blue));
+  color: var(--white); border: none; border-radius: 10px;
+  padding: 14px 28px; font-size: 0.95rem; font-weight: 600;
+  cursor: pointer; transition: all var(--transition);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  box-shadow: 0 4px 20px rgba(47,128,237,0.35);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(47,128,237,0.5); }
+
+.btn-outline {
+  background: transparent; color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.35); border-radius: 10px;
+  padding: 13px 26px; font-size: 0.95rem; font-weight: 500;
+  cursor: pointer; transition: all var(--transition);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex; gap: 28px; margin-top: 42px; flex-wrap: wrap;
+}
+.hero-stat { }
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 900; color: var(--gold); line-height: 1;
+}
+.hero-stat-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
+
+.hero-visual {
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.hero-phone-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.10) 0%, rgba(47,128,237,0.12) 100%);
+  border: 1.5px solid rgba(255,255,255,0.14);
+  border-radius: 28px; padding: 38px 32px;
+  backdrop-filter: blur(14px);
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+  position: relative;
+  animation: floatCard 5s ease-in-out infinite;
+}
+@keyframes floatCard { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+
+.hero-phone-icon { font-size: 72px; line-height: 1; }
+.hero-phone-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem; color: var(--white); text-align: center; font-weight: 700;
+}
+.hero-phone-since {
+  background: linear-gradient(135deg,var(--accent),var(--gold));
+  color: var(--dark); font-size: 0.8rem; font-weight: 700;
+  padding: 5px 16px; border-radius: 100px; letter-spacing: 0.06em;
+}
+
+.hero-chips {
+  display: flex; flex-direction: column; gap: 10px; margin-top: 14px; width: 100%;
+}
+.hero-chip {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 10px; padding: 9px 14px;
+  font-size: 0.82rem; color: rgba(255,255,255,0.82);
+}
+.hero-chip-icon { font-size: 1rem; }
+
+/* ── SECTIONS SHARED ── */
+section { padding: 90px 5vw; }
+.section-label {
+  display: inline-block; background: var(--light);
+  color: var(--blue); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 100px; margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900;
+  color: var(--navy); line-height: 1.18; margin-bottom: 14px;
+}
+.section-sub {
+  font-size: 1rem; color: var(--muted); max-width: 560px; line-height: 1.7;
+}
+.center { text-align: center; }
+.center .section-sub { margin: 0 auto; }
+
+/* ── ABOUT ── */
+.about { background: var(--offwhite); }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 70px;
+  max-width: 1100px; margin: 0 auto; align-items: center;
+}
+.about-visual {
+  position: relative;
+}
+.about-card {
+  background: var(--white); border-radius: 20px;
+  padding: 36px; box-shadow: var(--card-shadow);
+  border-left: 5px solid var(--blue);
+  position: relative; overflow: hidden;
+}
+.about-card::after {
+  content: '';
+  position: absolute; top: -30px; right: -30px;
+  width: 100px; height: 100px; border-radius: 50%;
+  background: linear-gradient(135deg,var(--light),transparent);
+}
+.about-year {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.5rem; font-weight: 900;
+  color: var(--light); position: absolute;
+  bottom: -10px; right: 20px; line-height: 1;
+  pointer-events: none;
+}
+.about-milestone {
+  display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px;
+}
+.about-milestone:last-child { margin-bottom: 0; }
+.about-milestone-icon {
+  width: 42px; height: 42px; border-radius: 12px;
+  background: linear-gradient(135deg,var(--sky),var(--blue));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0; color: white;
+}
+.about-milestone h4 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.about-milestone p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+.about-floating-badge {
+  position: absolute; top: -18px; right: 28px;
+  background: linear-gradient(135deg,var(--accent),var(--gold));
+  color: var(--dark); border-radius: 14px; padding: 12px 18px;
+  font-size: 0.78rem; font-weight: 700; box-shadow: 0 8px 24px rgba(232,160,32,0.38);
+  text-align: center; line-height: 1.4;
+}
+.about-floating-badge strong { display: block; font-size: 1.5rem; font-family: 'Playfair Display', serif; }
+
+.about-text .section-title { margin-bottom: 18px; }
+.about-para { font-size: 0.96rem; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
+.about-para strong { color: var(--navy); }
+
+/* ── PROPRIETOR ── */
+.proprietor { background: var(--white); }
+.proprietor-inner {
+  max-width: 900px; margin: 0 auto;
+  display: grid; grid-template-columns: auto 1fr; gap: 60px; align-items: center;
+}
+.prop-portrait {
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+.prop-avatar {
+  width: 160px; height: 160px; border-radius: 50%;
+  background: linear-gradient(135deg,var(--sky),var(--navy));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 64px;
+  border: 5px solid var(--light);
+  box-shadow: 0 12px 40px rgba(26,77,181,0.22);
+}
+.prop-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 700; color: var(--navy); text-align: center;
+}
+.prop-title {
+  font-size: 0.78rem; color: var(--blue); font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; text-align: center;
+}
+
+.prop-quote {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.45rem; color: var(--navy); line-height: 1.45;
+  margin-bottom: 18px; position: relative; padding-left: 22px;
+}
+.prop-quote::before {
+  content: '"'; position: absolute; left: 0; top: -4px;
+  font-size: 3rem; color: var(--gold); line-height: 1; font-family: 'Playfair Display', serif;
+}
+.prop-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 18px; }
+.prop-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+.prop-tag {
+  background: var(--offwhite); border: 1px solid var(--light);
+  color: var(--blue); font-size: 0.78rem; font-weight: 600;
+  padding: 6px 14px; border-radius: 100px;
+}
+
+/* ── SERVICES ── */
+.services { background: var(--navy); position: relative; overflow: hidden; }
+.services::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 70% at 80% 30%, rgba(47,128,237,0.15) 0%, transparent 60%);
+}
+.services .section-label { background: rgba(47,128,237,0.2); color: var(--light); }
+.services .section-title { color: var(--white); }
+.services .section-sub { color: rgba(255,255,255,0.55); }
+
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  max-width: 1100px; margin: 48px auto 0; position: relative; z-index: 1;
+}
+.service-card {
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius); padding: 32px 26px;
+  transition: all var(--transition); cursor: pointer;
+  position: relative; overflow: hidden;
+}
+.service-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg,rgba(47,128,237,0.15),transparent);
+  opacity: 0; transition: opacity var(--transition);
+}
+.service-card:hover { transform: translateY(-6px); border-color: rgba(47,128,237,0.5); box-shadow: 0 16px 48px rgba(0,0,0,0.28); }
+.service-card:hover::after { opacity: 1; }
+
+.service-icon {
+  width: 56px; height: 56px; border-radius: 16px;
+  background: linear-gradient(135deg,var(--sky),var(--blue));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin-bottom: 18px;
+}
+.service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.service-card p { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+.service-card-tag {
+  display: inline-block; margin-top: 14px;
+  background: rgba(47,128,237,0.18); color: var(--light);
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em;
+  padding: 4px 12px; border-radius: 100px;
+}
+
+/* ── CATALOG ── */
+.catalog { background: var(--offwhite); }
+.catalog-tabs {
+  display: flex; gap: 10px; flex-wrap: wrap; margin: 32px 0 36px;
+}
+.catalog-tab {
+  padding: 10px 22px; border-radius: 10px; border: 1.5px solid var(--light);
+  background: var(--white); color: var(--muted); font-size: 0.88rem; font-weight: 600;
+  cursor: pointer; transition: all var(--transition);
+}
+.catalog-tab.active, .catalog-tab:hover {
+  background: var(--blue); color: var(--white); border-color: var(--blue);
+  box-shadow: 0 4px 16px rgba(26,77,181,0.22);
+}
+
+.catalog-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  max-width: 1100px;
+}
+.catalog-card {
+  background: var(--white); border-radius: var(--radius);
+  padding: 24px 20px; box-shadow: var(--card-shadow);
+  text-align: center; transition: all var(--transition); cursor: pointer;
+  border: 1.5px solid transparent;
+}
+.catalog-card:hover { transform: translateY(-4px); border-color: var(--light); box-shadow: 0 16px 40px rgba(10,31,68,0.14); }
+.catalog-card-icon { font-size: 42px; margin-bottom: 12px; }
+.catalog-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.catalog-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+.catalog-card-badge {
+  display: inline-block; margin-top: 12px;
+  background: var(--offwhite); color: var(--blue);
+  font-size: 0.72rem; font-weight: 700; padding: 4px 12px; border-radius: 100px;
+  border: 1px solid var(--light);
+}
+
+/* ── TRUST / TESTIMONIALS ── */
+.trust { background: var(--white); }
+.trust-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  max-width: 1100px; margin: 48px auto 0;
+}
+.trust-card {
+  background: var(--offwhite); border-radius: var(--radius);
+  padding: 30px; border-left: 4px solid var(--blue);
+  transition: all var(--transition);
+}
+.trust-card:hover { transform: translateY(-4px); box-shadow: var(--card-shadow); }
+.trust-stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; margin-bottom: 12px; }
+.trust-text { font-size: 0.9rem; color: var(--muted); line-height: 1.7; font-style: italic; margin-bottom: 16px; }
+.trust-author { display: flex; align-items: center; gap: 12px; }
+.trust-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg,var(--sky),var(--blue));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: white;
+}
+.trust-author-name { font-size: 0.88rem; font-weight: 700; color: var(--navy); }
+.trust-author-since { font-size: 0.75rem; color: var(--muted); }
+
+/* ── FAQ ── */
+.faq { background: var(--offwhite); }
+.faq-list {
+  max-width: 760px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 12px;
+}
+.faq-item {
+  background: var(--white); border-radius: var(--radius);
+  border: 1.5px solid var(--light); overflow: hidden;
+  transition: all var(--transition);
+}
+.faq-item.open { border-color: var(--blue); box-shadow: 0 4px 20px rgba(26,77,181,0.10); }
+.faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px; cursor: pointer; gap: 16px;
+}
+.faq-q-text { font-size: 0.96rem; font-weight: 600; color: var(--navy); }
+.faq-chevron {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: var(--offwhite); display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; color: var(--blue); flex-shrink: 0;
+  transition: transform var(--transition), background var(--transition);
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); background: var(--blue); color: white; }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(.4,0,.2,1), padding 0.3s;
+  padding: 0 24px;
+}
+.faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
+.faq-a p { font-size: 0.9rem; color: var(--muted); line-height: 1.72; }
+
+/* ── CONTACT ── */
+.contact { background: var(--navy); position: relative; overflow: hidden; }
+.contact::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 10% 80%, rgba(232,160,32,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 60% at 90% 20%, rgba(47,128,237,0.15) 0%, transparent 60%);
+}
+.contact .section-label { background: rgba(47,128,237,0.2); color: var(--light); }
+.contact .section-title { color: var(--white); }
+.contact .section-sub { color: rgba(255,255,255,0.55); }
+
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  max-width: 1100px; margin: 48px auto 0; position: relative; z-index: 1;
+}
+
+.contact-info { display: flex; flex-direction: column; gap: 18px; }
+.contact-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 12px; padding: 18px 20px;
+  transition: all var(--transition);
+}
+.contact-item:hover { background: rgba(255,255,255,0.10); border-color: rgba(47,128,237,0.4); }
+.contact-item-icon {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 20px;
+}
+.contact-item-icon.phone { background: linear-gradient(135deg,#25d366,#128c7e); }
+.contact-item-icon.wa { background: linear-gradient(135deg,#25d366,#075e54); }
+.contact-item-icon.addr { background: linear-gradient(135deg,var(--sky),var(--blue)); }
+.contact-item-icon.hours { background: linear-gradient(135deg,var(--accent),var(--gold)); }
+
+.contact-item-title { font-size: 0.75rem; color: rgba(255,255,255,0.45); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+.contact-item-val { font-size: 0.95rem; color: var(--white); font-weight: 500; }
+.contact-item-val a { color: inherit; text-decoration: none; }
+.contact-item-val a:hover { color: var(--gold); }
+
+.contact-form {
+  background: rgba(255,255,255,0.07);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 20px; padding: 36px 30px;
+}
+.contact-form h3 { font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 24px; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.55); font-weight: 600; margin-bottom: 7px; letter-spacing: 0.04em; }
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%; background: rgba(255,255,255,0.09);
+  border: 1.5px solid rgba(255,255,255,0.14);
+  border-radius: 10px; padding: 12px 16px;
+  font-size: 0.92rem; color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  transition: all var(--transition); outline: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { border-color: var(--sky); background: rgba(255,255,255,0.12); }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-group select option { background: var(--navy); }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.btn-submit {
+  width: 100%; background: linear-gradient(135deg,var(--sky),var(--blue));
+  color: white; border: none; border-radius: 10px;
+  padding: 14px; font-size: 0.96rem; font-weight: 700;
+  cursor: pointer; transition: all var(--transition);
+  box-shadow: 0 4px 20px rgba(47,128,237,0.35);
+}
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(47,128,237,0.5); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark); padding: 56px 5vw 32px;
+  border-top: 1.5px solid rgba(47,128,237,0.18);
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+  max-width: 1100px; margin: 0 auto 48px;
+}
+.footer-brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 900; color: var(--white); margin-bottom: 4px;
+}
+.footer-brand-name span { color: var(--gold); }
+.footer-brand-sub { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+.footer-brand-desc { font-size: 0.87rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+.footer-col h4 { font-size: 0.82rem; color: rgba(255,255,255,0.55); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a {
+  font-size: 0.87rem; color: rgba(255,255,255,0.45); text-decoration: none;
+  transition: color var(--transition);
+}
+.footer-col ul li a:hover { color: var(--white); }
+
+.footer-bottom {
+  max-width: 1100px; margin: 0 auto;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 24px; display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 14px;
+}
+.footer-copy { font-size: 0.82rem; color: rgba(255,255,255,0.3); }
+.footer-est {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.8rem; color: var(--muted);
+}
+.footer-est-badge {
+  background: linear-gradient(135deg,var(--accent),var(--gold));
+  color: var(--dark); font-size: 0.72rem; font-weight: 800;
+  padding: 3px 10px; border-radius: 100px; letter-spacing: 0.04em;
+}
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(7,19,48,0.8); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-box {
+  background: var(--white); border-radius: 22px;
+  width: 100%; max-width: 680px; max-height: 88vh;
+  overflow-y: auto; position: relative;
+  box-shadow: 0 32px 80px rgba(7,19,48,0.4);
+  transform: scale(0.88) translateY(24px);
+  transition: transform 0.38s cubic-bezier(.4,0,.2,1);
+}
+.modal-overlay.open .modal-box { transform: scale(1) translateY(0); }
+.modal-header {
+  background: linear-gradient(135deg,var(--navy),#0d2f6e);
+  padding: 28px 32px 24px; display: flex; align-items: flex-start; justify-content: space-between;
+  border-radius: 22px 22px 0 0; gap: 16px;
+}
+.modal-header-icon { font-size: 2rem; margin-bottom: 4px; }
+.modal-header-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--white); margin-bottom: 4px; }
+.modal-header-sub { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+.modal-close {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: rgba(255,255,255,0.12); border: none; cursor: pointer;
+  color: white; font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition); flex-shrink: 0;
+}
+.modal-close:hover { background: rgba(255,255,255,0.22); transform: rotate(90deg); }
+.modal-body { padding: 32px; }
+
+/* Modal Content Styles */
+.modal-service-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px;
+}
+.modal-service-item {
+  background: var(--offwhite); border-radius: 12px; padding: 18px;
+  border-left: 4px solid var(--blue);
+}
+.modal-service-item h4 { font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+.modal-service-item p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+.modal-catalog-section { margin-bottom: 26px; }
+.modal-catalog-section h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 14px; border-bottom: 2px solid var(--light); padding-bottom: 8px; }
+.modal-catalog-items { display: flex; flex-wrap: wrap; gap: 8px; }
+.modal-catalog-chip {
+  background: var(--white); border: 1.5px solid var(--light); color: var(--text);
+  font-size: 0.82rem; font-weight: 500; padding: 7px 14px; border-radius: 8px;
+  transition: all var(--transition);
+}
+.modal-catalog-chip:hover { border-color: var(--blue); color: var(--blue); }
+
+.modal-faq-list { display: flex; flex-direction: column; gap: 12px; }
+.modal-faq-item { background: var(--offwhite); border-radius: 12px; padding: 16px 18px; border-left: 4px solid var(--blue); }
+.modal-faq-item h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.modal-faq-item p { font-size: 0.84rem; color: var(--muted); line-height: 1.6; }
+
+.modal-contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; }
+.modal-contact-tile {
+  background: var(--offwhite); border-radius: 12px; padding: 16px;
+  display: flex; align-items: center; gap: 12px;
+  transition: all var(--transition); text-decoration: none;
+}
+.modal-contact-tile:hover { background: var(--light); transform: translateY(-2px); }
+.modal-contact-tile-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
+}
+.modal-contact-tile-title { font-size: 0.72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.modal-contact-tile-val { font-size: 0.9rem; font-weight: 700; color: var(--navy); }
+
+/* ── TRUST BANNER ── */
+.trust-banner {
+  background: linear-gradient(135deg,var(--blue),var(--navy));
+  padding: 48px 5vw;
+}
+.trust-banner-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 30px;
+  text-align: center;
+}
+.trust-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem; font-weight: 900; color: var(--gold); line-height: 1;
+}
+.trust-stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px; }
+
+/* ── ANIMATIONS ── */
+.fade-up {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up-delay-1 { transition-delay: 0.1s; }
+.fade-up-delay-2 { transition-delay: 0.2s; }
+.fade-up-delay-3 { transition-delay: 0.3s; }
+.fade-up-delay-4 { transition-delay: 0.4s; }
+.fade-up-delay-5 { transition-delay: 0.5s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { order: -1; }
+  .about-grid { grid-template-columns: 1fr; gap: 36px; }
+  .about-floating-badge { top: -16px; right: 16px; }
+  .proprietor-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+  .prop-portrait { align-items: center; }
+  .prop-quote { padding-left: 18px; }
+  .prop-tags { justify-content: center; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .catalog-grid { grid-template-columns: 1fr 1fr; }
+  .trust-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .trust-banner-inner { grid-template-columns: repeat(2,1fr); }
+  .modal-service-grid { grid-template-columns: 1fr; }
+  .modal-contact-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 64px 5vw; }
+  .services-grid { grid-template-columns: 1fr; }
+  .catalog-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .hero-stats { gap: 18px; }
+  .trust-banner-inner { grid-template-columns: 1fr 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">📱</div>
+    <div>
+      <div class="nav-logo-text"><span>Hello India</span> Cellular</div>
+      <div class="nav-logo-sub">Est. 26 December 2004</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#catalog">Catalog</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">📞 Contact Us</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#catalog" onclick="toggleMenu()">Catalog</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="#contact" onclick="toggleMenu()">Contact Us</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Trusted Since 26 December 2004
+      </div>
+      <h1>Reliable <span>Cellular</span><br>Solutions for All</h1>
+      <p class="hero-tagline">Serving Since 2004 — Your Neighbourhood<br>Mobile & Telecom Specialist in Chennai</p>
+      <p class="hero-sub">Mobiles • Accessories • SIM Cards • Recharge • Repairs</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="openModal('contact')">📞 Get In Touch</button>
+        <button class="btn-outline" onclick="openModal('catalog')">🛍️ Browse Catalog</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">21+</div>
+          <div class="hero-stat-label">Years Serving</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">1000s</div>
+          <div class="hero-stat-label">Happy Customers</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">2004</div>
+          <div class="hero-stat-label">Established</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-phone-card">
+        <div class="hero-phone-icon">📱</div>
+        <div class="hero-phone-title">Hello India Cellular</div>
+        <div class="hero-phone-since">Serving Since 2004</div>
+        <div class="hero-chips">
+          <div class="hero-chip"><span class="hero-chip-icon">✅</span> All Major Brands Available</div>
+          <div class="hero-chip"><span class="hero-chip-icon">⚡</span> Instant Recharge & SIM Services</div>
+          <div class="hero-chip"><span class="hero-chip-icon">🤝</span> Trusted by Local Families</div>
+          <div class="hero-chip"><span class="hero-chip-icon">🛠️</span> Expert Repairs & Support</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BANNER -->
+<div class="trust-banner">
+  <div class="trust-banner-inner">
+    <div class="fade-up">
+      <div class="trust-stat-num">21+</div>
+      <div class="trust-stat-label">Years in Business</div>
+    </div>
+    <div class="fade-up fade-up-delay-1">
+      <div class="trust-stat-num">100%</div>
+      <div class="trust-stat-label">Customer Focus</div>
+    </div>
+    <div class="fade-up fade-up-delay-2">
+      <div class="trust-stat-num">All</div>
+      <div class="trust-stat-label">Major Networks</div>
+    </div>
+    <div class="fade-up fade-up-delay-3">
+      <div class="trust-stat-num">1 Stop</div>
+      <div class="trust-stat-label">Telecom Shop</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual fade-up">
+      <div class="about-floating-badge">
+        <strong>2004</strong>
+        Est. Date
+      </div>
+      <div class="about-card">
+        <div class="about-year">2004</div>
+        <div class="about-milestone">
+          <div class="about-milestone-icon">🚀</div>
+          <div>
+            <h4>Founded — 26 December 2004</h4>
+            <p>Hello India Cellular opened its doors, committed to offering genuine mobile and telecom services to the local community.</p>
+          </div>
+        </div>
+        <div class="about-milestone">
+          <div class="about-milestone-icon">📡</div>
+          <div>
+            <h4>Expanding Services</h4>
+            <p>Over the years, we grew from basic recharge to full mobile sales, accessories, and multi-network support.</p>
+          </div>
+        </div>
+        <div class="about-milestone">
+          <div class="about-milestone-icon">🏆</div>
+          <div>
+            <h4>Trusted by Generations</h4>
+            <p>Families who came to us in 2004 still return today — our customer loyalty is our greatest achievement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text fade-up fade-up-delay-2">
+      <span class="section-label">Our Story</span>
+      <h2 class="section-title">Serving Since 2004 —<br>Built on Perseverance</h2>
+      <p class="about-para">Established on <strong>26 December 2004</strong>, Hello India Cellular began with a clear purpose: to bring reliable, honest, and customer-first mobile services to the people of Chennai.</p>
+      <p class="about-para">Over more than <strong>two decades</strong>, we have weathered every change in the telecom industry — from the feature phone era to the smartphone revolution — always staying true to our customers and our community.</p>
+      <p class="about-para">What makes us different is not just our range of products, but the <strong>personal attention</strong>, trustworthy advice, and after-sale support that only a long-standing local business can offer.</p>
+      <button class="btn-primary" style="margin-top:12px;" onclick="openModal('services')">Explore Our Services →</button>
+    </div>
+  </div>
+</section>
+
+<!-- PROPRIETOR -->
+<section class="proprietor" id="proprietor">
+  <div class="proprietor-inner">
+    <div class="prop-portrait fade-up">
+      <div class="prop-avatar">👨‍💼</div>
+      <div class="prop-name">Mr. D. Prabu</div>
+      <div class="prop-title">Proprietor & Founder</div>
+    </div>
+    <div class="fade-up fade-up-delay-2">
+      <span class="section-label">Meet the Proprietor</span>
+      <h2 class="section-title">Built on Perseverance</h2>
+      <p class="prop-quote">Every customer who walks through our door deserves the same dedication I had on day one.</p>
+      <p class="prop-desc">Mr. D. Prabu founded Hello India Cellular on 26 December 2004 with a single goal: to be the most reliable and trustworthy mobile shop in the neighbourhood. Over more than 21 years, his perseverance, patience, and genuine passion for helping customers have turned a small shop into a community institution.</p>
+      <p class="prop-desc">Known for his hands-on approach and unwavering dedication, Mr. Prabu personally oversees every aspect of the business — from selecting quality products to ensuring every customer leaves satisfied.</p>
+      <div class="prop-tags">
+        <span class="prop-tag">21+ Years Experience</span>
+        <span class="prop-tag">Customer First</span>
+        <span class="prop-tag">Trustworthy Advice</span>
+        <span class="prop-tag">Community Leader</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div style="max-width:1100px; margin: 0 auto; position:relative; z-index:1;">
+    <span class="section-label">What We Offer</span>
+    <h2 class="section-title" style="color:white;">Reliable Cellular Solutions</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.55);">Everything you need for your mobile and telecom requirements — under one trusted roof since 2004.</p>
+    <div class="services-grid">
+      <div class="service-card fade-up" onclick="openModal('services')">
+        <div class="service-icon">📱</div>
+        <h3>Mobile Phone Sales</h3>
+        <p>Latest smartphones and feature phones from all major brands. Genuine products, competitive prices.</p>
+        <span class="service-card-tag">All Brands</span>
+      </div>
+      <div class="service-card fade-up fade-up-delay-1" onclick="openModal('services')">
+        <div class="service-icon">🔋</div>
+        <h3>Recharge & Bill Pay</h3>
+        <p>Instant recharge for all networks — Airtel, Jio, BSNL, Vi and more. Quick and hassle-free.</p>
+        <span class="service-card-tag">All Networks</span>
+      </div>
+      <div class="service-card fade-up fade-up-delay-2" onclick="openModal('services')">
+        <div class="service-icon">🎧</div>
+        <h3>Accessories</h3>
+        <p>Covers, chargers, earphones, cables, screen protectors and more — quality accessories at great value.</p>
+        <span class="service-card-tag">Wide Range</span>
+      </div>
+      <div class="service-card fade-up fade-up-delay-3" onclick="openModal('services')">
+        <div class="service-icon">📡</div>
+        <h3>SIM Card Services</h3>
+        <p>New SIM activations, port requests, and network migrations for all major telecom operators.</p>
+        <span class="service-card-tag">All Operators</span>
+      </div>
+      <div class="service-card fade-up fade-up-delay-4" onclick="openModal('services')">
+        <div class="service-icon">🛠️</div>
+        <h3>Mobile Repairs</h3>
+        <p>Screen replacements, battery swaps, charging port fixes — professional repairs by experienced hands.</p>
+        <span class="service-card-tag">All Models</span>
+      </div>
+      <div class="service-card fade-up fade-up-delay-5" onclick="openModal('services')">
+        <div class="service-icon">💬</div>
+        <h3>Customer Advisory</h3>
+        <p>Not sure which phone to buy? We offer honest, unbiased advice based on your needs and budget.</p>
+        <span class="service-card-tag">Free Advice</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG PREVIEW -->
+<section class="catalog" id="catalog">
+  <div style="max-width:1100px; margin: 0 auto;">
+    <span class="section-label">Product Catalog</span>
+    <h2 class="section-title">Explore What We Carry</h2>
+    <p class="section-sub">From flagship smartphones to everyday accessories, we stock products trusted by our customers.</p>
+    <div class="catalog-tabs">
+      <button class="catalog-tab active" onclick="filterCatalog('all',this)">All Products</button>
+      <button class="catalog-tab" onclick="filterCatalog('mobiles',this)">📱 Mobiles</button>
+      <button class="catalog-tab" onclick="filterCatalog('accessories',this)">🎧 Accessories</button>
+      <button class="catalog-tab" onclick="filterCatalog('recharge',this)">⚡ Recharge</button>
+      <button class="catalog-tab" onclick="filterCatalog('featured',this)">⭐ Featured</button>
+    </div>
+    <div class="catalog-grid" id="catalogGrid">
+      <div class="catalog-card fade-up" data-cat="mobiles" onclick="openModal('catalog')">
+        <div class="catalog-card-icon">📱</div>
+        <h4>Smartphones</h4>
+        <p>Android & iOS handsets from ₹5,000 to ₹1,00,000+</p>
+        <span class="catalog-card-badge">Samsung • Apple • Redmi</span>
+      </div>
+      <div class="catalog-card fade-up fade-up-delay-1" data-cat="mobiles" onclick="openModal('catalog')">
+        <div class="catalog-card-icon">📞</div>
+        <h4>Feature Phones</h4>
+        <p>Simple, reliable phones for every age and budget</p>
+        <span class="catalog-card-badge">Nokia • Jio • itel</span>
+      </div>
+      <div class="catalog-card fade-up fade-up-delay-2" data-cat="accessories" onclick="openModal('catalog')">
+        <div class="catalog-card-icon">🎧</div>
+        <h4>Earphones & Buds</h4>
+        <p>Wired and wireless options for all budgets</p>
+        <span class="catalog-card-badge">Boat • JBL • Sony</span>
+      </div>
+      <div class="catalog-card fade-up fade-up-delay-3" data-cat="accessories" onclick="openModal('catalog')">
+        <div class="catalog-card-icon">🔋</div>
+        <h4>Chargers & Cables</h4>
+        <p>Fast chargers, USB cables, power banks</p>
+        <span class="catalog-card-badge">Original & Compatible</span>
+      </div>
+      <div class="catalog-card fade-up fade-up-delay-1" data-cat="recharge" onclick="openModal('catalog')">
+        <div class="catalog-card-icon">⚡</div>
+        <h4>Mobile Recharge</h4>
+        <p>Prepaid recharge for all major networks, instantly</p>
+        <span class="catalog-card-badge">Jio • Airtel • BSNL • Vi</span>
+      </div>
+      <div class="catalog-card fade-up fade-up-delay-2" data-cat="recharge" onclick="openModal('catalog')">
+        <div class="catalog-card-icon">📡</div>
+        <h4>SIM Cards</h4>
+        <p>New connections and MNP porting services</p>
+        <span class="catalog-card-badge">All Operators</span>
+      </div>
+      <div class="catalog-card fade-up fade-up-delay-3" data-cat="featured" onclick="openModal('catalog')">
+        <div class="catalog-card-icon">🛡️</div>
+        <h4>Screen Protectors</h4>
+        <p>Tempered glass & hydrogel protectors, fitted free</p>
+        <span class="catalog-card-badge">All Models</span>
+      </div>
+      <div class="catalog-card fade-up fade-up-delay-4" data-cat="featured" onclick="openModal('catalog')">
+        <div class="catalog-card-icon">📦</div>
+        <h4>Phone Covers & Cases</h4>
+        <p>Hundreds of styles — silicone, flip, wallet & more</p>
+        <span class="catalog-card-badge">Latest Models</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS / TRUST -->
+<section class="trust" id="trust">
+  <div style="max-width:1100px; margin: 0 auto; text-align:center;">
+    <span class="section-label">Customer Voices</span>
+    <h2 class="section-title">Trusted by Customers<br>Over the Years</h2>
+    <p class="section-sub">Our customers have been with us since 2004 — here's what they say about us.</p>
+    <div class="trust-grid">
+      <div class="trust-card fade-up">
+        <div class="trust-stars">★★★★★</div>
+        <p class="trust-text">"I've been buying my phones from Hello India Cellular since 2006. Mr. Prabu always gives the most honest advice. Never once felt cheated. That's rare!"</p>
+        <div class="trust-author">
+          <div class="trust-avatar">👩</div>
+          <div>
+            <div class="trust-author-name">Meenakshi R.</div>
+            <div class="trust-author-since">Customer since 2006</div>
+          </div>
+        </div>
+      </div>
+      <div class="trust-card fade-up fade-up-delay-2">
+        <div class="trust-stars">★★★★★</div>
+        <p class="trust-text">"Whenever I need a recharge or have a phone issue, this is the only place I go. Fast, reliable, and the owner personally helps you. Over 15 years of trust."</p>
+        <div class="trust-author">
+          <div class="trust-avatar">👨</div>
+          <div>
+            <div class="trust-author-name">Karthik S.</div>
+            <div class="trust-author-since">Customer since 2009</div>
+          </div>
+        </div>
+      </div>
+      <div class="trust-card fade-up fade-up-delay-4">
+        <div class="trust-stars">★★★★★</div>
+        <p class="trust-text">"My whole family buys their phones here. The quality is genuine and the price is always fair. Hello India Cellular is truly a neighbourhood institution."</p>
+        <div class="trust-author">
+          <div class="trust-avatar">👩</div>
+          <div>
+            <div class="trust-author-name">Lakshmi D.</div>
+            <div class="trust-author-since">Customer since 2011</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div style="max-width:760px; margin: 0 auto; text-align:center;">
+    <span class="section-label">Quick Answers</span>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Have questions? Find answers to the most common queries from our customers.</p>
+  </div>
+  <div class="faq-list" id="faqList">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">What are your business hours?</span>
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-a"><p>We are open Monday to Saturday from 10:00 AM to 8:30 PM, and on Sundays from 11:00 AM to 6:00 PM. We are closed on major public holidays — do call ahead on holidays to confirm.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">Do you sell genuine / original mobile phones?</span>
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-a"><p>Absolutely. We only stock genuine, brand-authorised products. We have built our reputation over 21 years on trust and honesty — you will always get what you pay for at Hello India Cellular.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">Do you support all mobile networks for recharge?</span>
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-a"><p>Yes! We provide instant recharge services for all major networks including Jio, Airtel, BSNL, and Vi (Vodafone Idea). Walk in or WhatsApp us for quick service.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">Can you help me port my number to a different network?</span>
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-a"><p>Yes, we assist with Mobile Number Portability (MNP) for all operators. Just bring your existing SIM and a valid ID proof. We'll guide you through the entire process and activate your new connection.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">Do you offer mobile repair services?</span>
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-a"><p>We offer basic mobile repair services including screen replacement, battery replacement, and charging port repair for common handsets. Visit the shop with your device for a free inspection and quote.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">What payment methods do you accept?</span>
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-a"><p>We accept cash, UPI (GPay, PhonePe, Paytm), and major debit/credit cards. For large purchases, we can also arrange easy EMI options through select banks.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">How long has Hello India Cellular been in business?</span>
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-a"><p>Hello India Cellular was established on 26 December 2004 by Mr. D. Prabu. As of 2025, we have been serving our valued customers for over 21 years — making us one of the most experienced local mobile shops in the area.</p></div>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:36px;">
+    <button class="btn-primary" onclick="openModal('faq')">View All FAQs</button>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div style="max-width:1100px; margin: 0 auto; position:relative; z-index:1;">
+    <span class="section-label">Get In Touch</span>
+    <h2 class="section-title">We're Here to Help</h2>
+    <p class="section-sub">Have a question, need a recharge, or looking for a new phone? Reach out — we'd love to help.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item fade-up">
+          <div class="contact-item-icon phone">📞</div>
+          <div>
+            <div class="contact-item-title">Call Us</div>
+            <div class="contact-item-val"><a href="tel:+914412345678">+91 44 1234 5678</a></div>
+          </div>
+        </div>
+        <div class="contact-item fade-up fade-up-delay-1">
+          <div class="contact-item-icon wa">💬</div>
+          <div>
+            <div class="contact-item-title">WhatsApp</div>
+            <div class="contact-item-val"><a href="https://wa.me/919876543210" target="_blank">+91 98765 43210</a></div>
+          </div>
+        </div>
+        <div class="contact-item fade-up fade-up-delay-2">
+          <div class="contact-item-icon addr">📍</div>
+          <div>
+            <div class="contact-item-title">Visit Us</div>
+            <div class="contact-item-val">Hello India Cellular, Chennai, Tamil Nadu – 600 001</div>
+          </div>
+        </div>
+        <div class="contact-item fade-up fade-up-delay-3">
+          <div class="contact-item-icon hours">🕐</div>
+          <div>
+            <div class="contact-item-title">Business Hours</div>
+            <div class="contact-item-val">Mon–Sat: 10 AM – 8:30 PM<br>Sun: 11 AM – 6 PM</div>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="openModal('contact')" style="margin-top:8px; width:fit-content;">📋 Send Enquiry</button>
+      </div>
+      <div class="contact-form fade-up fade-up-delay-2">
+        <h3>Send an Enquiry</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="e.g. Ramesh Kumar">
+          </div>
+          <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="tel" placeholder="+91 98765 43210">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>What are you looking for?</label>
+          <select>
+            <option value="">Select a topic…</option>
+            <option>Buy a Mobile Phone</option>
+            <option>Mobile Recharge</option>
+            <option>New SIM / Porting</option>
+            <option>Accessories</option>
+            <option>Repair Service</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Message</label>
+          <textarea placeholder="Tell us how we can help you…"></textarea>
+        </div>
+        <button class="btn-submit" onclick="submitForm()">Send Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name"><span>Hello India</span> Cellular</div>
+      <div class="footer-brand-sub">Est. 26 December 2004 · Chennai, Tamil Nadu</div>
+      <p class="footer-brand-desc">Your trusted neighbourhood mobile and telecom specialist for over two decades. Founded by Mr. D. Prabu with a commitment to honest, customer-first service.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#catalog">Product Catalog</a></li>
+        <li><a href="#faq">FAQs</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Mobile Sales</a></li>
+        <li><a href="#services">Recharge Services</a></li>
+        <li><a href="#services">SIM Cards</a></li>
+        <li><a href="#services">Accessories</a></li>
+        <li><a href="#services">Mobile Repairs</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Networks</h4>
+      <ul>
+        <li><a href="#">Jio</a></li>
+        <li><a href="#">Airtel</a></li>
+        <li><a href="#">BSNL</a></li>
+        <li><a href="#">Vi (Vodafone Idea)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Hello India Cellular. All rights reserved. Proprietor: Mr. D. Prabu.</div>
+    <div class="footer-est">
+      <span class="footer-est-badge">Est. 2004</span>
+      Serving Chennai with pride for 21+ years
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ MODALS ═══ -->
+
+<!-- SERVICES MODAL -->
+<div class="modal-overlay" id="modal-services" onclick="handleOverlayClick(event,'modal-services')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-header-icon">🛠️</div>
+        <div class="modal-header-title">Our Services</div>
+        <div class="modal-header-sub">Everything we offer at Hello India Cellular</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-services')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-service-grid">
+        <div class="modal-service-item">
+          <h4>📱 Mobile Phone Sales</h4>
+          <p>Genuine smartphones and feature phones. Samsung, Apple, Redmi, Realme, Vivo, OPPO, Nokia, and more.</p>
+        </div>
+        <div class="modal-service-item">
+          <h4>⚡ Recharge Services</h4>
+          <p>Instant prepaid recharge for Jio, Airtel, BSNL, and Vi. Talktime, data, and full plans available.</p>
+        </div>
+        <div class="modal-service-item">
+          <h4>📡 SIM Card Activation</h4>
+          <p>New SIM connections and MNP porting for all major telecom operators. Quick document verification.</p>
+        </div>
+        <div class="modal-service-item">
+          <h4>🎧 Accessories</h4>
+          <p>Phone covers, screen protectors, chargers, earphones, cables, power banks, and more.</p>
+        </div>
+        <div class="modal-service-item">
+          <h4>🛠️ Mobile Repairs</h4>
+          <p>Screen replacement, battery replacement, charging port repair, and basic software issues.</p>
+        </div>
+        <div class="modal-service-item">
+          <h4>💬 Advisory Services</h4>
+          <p>Free, unbiased advice on choosing the right phone, plan, or network for your needs and budget.</p>
+        </div>
+        <div class="modal-service-item">
+          <h4>💳 EMI Options</h4>
+          <p>No-cost EMI available on select phones via partner banks. Ask in-store for eligible models.</p>
+        </div>
+        <div class="modal-service-item">
+          <h4>🔄 Exchange Offer</h4>
+          <p>Exchange your old phone for a new one. Get a fair valuation on your existing device.</p>
+        </div>
+      </div>
+      <p style="font-size:0.85rem;color:var(--muted);text-align:center;">Visit us at our Chennai store or WhatsApp us for availability and pricing.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CATALOG MODAL -->
+<div class="modal-overlay" id="modal-catalog" onclick="handleOverlayClick(event,'modal-catalog')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-header-icon">🛍️</div>
+        <div class="modal-header-title">Product Catalog</div>
+        <div class="modal-header-sub">Explore everything we carry in-store</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-catalog')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-catalog-section">
+        <h3>📱 Mobile Phones</h3>
+        <div class="modal-catalog-items">
+          <span class="modal-catalog-chip">Samsung Galaxy Series</span>
+          <span class="modal-catalog-chip">Apple iPhone</span>
+          <span class="modal-catalog-chip">Redmi / Xiaomi</span>
+          <span class="modal-catalog-chip">Realme</span>
+          <span class="modal-catalog-chip">Vivo</span>
+          <span class="modal-catalog-chip">OPPO</span>
+          <span class="modal-catalog-chip">Nokia</span>
+          <span class="modal-catalog-chip">Motorola</span>
+          <span class="modal-catalog-chip">Jio Phones</span>
+          <span class="modal-catalog-chip">itel</span>
+          <span class="modal-catalog-chip">Lava</span>
+          <span class="modal-catalog-chip">iQOO</span>
+        </div>
+      </div>
+      <div class="modal-catalog-section">
+        <h3>🎧 Accessories</h3>
+        <div class="modal-catalog-items">
+          <span class="modal-catalog-chip">Earphones (Wired)</span>
+          <span class="modal-catalog-chip">TWS Earbuds</span>
+          <span class="modal-catalog-chip">Phone Covers</span>
+          <span class="modal-catalog-chip">Tempered Glass</span>
+          <span class="modal-catalog-chip">Fast Chargers</span>
+          <span class="modal-catalog-chip">USB-C / Lightning Cables</span>
+          <span class="modal-catalog-chip">Power Banks</span>
+          <span class="modal-catalog-chip">Bluetooth Speakers</span>
+          <span class="modal-catalog-chip">Smartwatches</span>
+          <span class="modal-catalog-chip">OTG Adapters</span>
+          <span class="modal-catalog-chip">Car Chargers</span>
+        </div>
+      </div>
+      <div class="modal-catalog-section">
+        <h3>⚡ Recharge & SIM</h3>
+        <div class="modal-catalog-items">
+          <span class="modal-catalog-chip">Jio Prepaid Plans</span>
+          <span class="modal-catalog-chip">Airtel Prepaid Plans</span>
+          <span class="modal-catalog-chip">BSNL Plans</span>
+          <span class="modal-catalog-chip">Vi Plans</span>
+          <span class="modal-catalog-chip">New SIM – Jio</span>
+          <span class="modal-catalog-chip">New SIM – Airtel</span>
+          <span class="modal-catalog-chip">New SIM – BSNL</span>
+          <span class="modal-catalog-chip">MNP Porting</span>
+        </div>
+      </div>
+      <p style="font-size:0.84rem;color:var(--muted);text-align:center;margin-top:16px;">For current prices and stock availability, please call or visit our store.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ MODAL -->
+<div class="modal-overlay" id="modal-faq" onclick="handleOverlayClick(event,'modal-faq')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-header-icon">❓</div>
+        <div class="modal-header-title">All FAQs</div>
+        <div class="modal-header-sub">Everything you might want to know</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-faq')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-faq-list">
+        <div class="modal-faq-item"><h4>What are your business hours?</h4><p>Mon–Sat: 10:00 AM – 8:30 PM. Sundays: 11:00 AM – 6:00 PM. Closed on major public holidays.</p></div>
+        <div class="modal-faq-item"><h4>Are your phones genuine / original?</h4><p>Yes — 100%. We only stock brand-authorised, genuine products. Our 21-year reputation is built on honesty.</p></div>
+        <div class="modal-faq-item"><h4>Do you support all networks for recharge?</h4><p>Yes — Jio, Airtel, BSNL, and Vi (Vodafone Idea). Instant processing available.</p></div>
+        <div class="modal-faq-item"><h4>Can you help me port my number?</h4><p>Yes! Bring your existing SIM and a valid ID proof. We handle the complete MNP process for all networks.</p></div>
+        <div class="modal-faq-item"><h4>Do you offer repair services?</h4><p>We offer screen replacement, battery swaps, charging port fixes, and basic repairs on common handsets.</p></div>
+        <div class="modal-faq-item"><h4>What payment methods do you accept?</h4><p>Cash, UPI (GPay, PhonePe, Paytm), and debit/credit cards. EMI available on select purchases.</p></div>
+        <div class="modal-faq-item"><h4>Do you offer exchange of old phones?</h4><p>Yes! Bring your old phone for a free valuation. You can exchange it against a new purchase in-store.</p></div>
+        <div class="modal-faq-item"><h4>How long has the shop been operating?</h4><p>Since 26 December 2004 — over 21 years of trusted service to the Chennai community.</p></div>
+        <div class="modal-faq-item"><h4>Who is the proprietor?</h4><p>Mr. D. Prabu — founder and proprietor, known for his perseverance and dedication to every customer.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="modal-contact" onclick="handleOverlayClick(event,'modal-contact')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-header-icon">📞</div>
+        <div class="modal-header-title">Contact Us</div>
+        <div class="modal-header-sub">We're just a call or message away</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-contact')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-contact-grid">
+        <a class="modal-contact-tile" href="tel:+914412345678">
+          <div class="modal-contact-tile-icon" style="background:linear-gradient(135deg,#2f80ed,#0a1f44);">📞</div>
+          <div>
+            <div class="modal-contact-tile-title">Phone</div>
+            <div class="modal-contact-tile-val">+91 44 1234 5678</div>
+          </div>
+        </a>
+        <a class="modal-contact-tile" href="https://wa.me/919876543210" target="_blank">
+          <div class="modal-contact-tile-icon" style="background:linear-gradient(135deg,#25d366,#128c7e);">💬</div>
+          <div>
+            <div class="modal-contact-tile-title">WhatsApp</div>
+            <div class="modal-contact-tile-val">+91 98765 43210</div>
+          </div>
+        </a>
+      </div>
+      <div class="modal-faq-item" style="margin-bottom:16px;background:var(--offwhite);border-radius:12px;padding:18px;border-left:4px solid var(--blue);">
+        <h4 style="font-size:0.9rem;font-weight:700;color:var(--navy);margin-bottom:6px;">📍 Our Address</h4>
+        <p style="font-size:0.85rem;color:var(--muted);">Hello India Cellular, Chennai, Tamil Nadu – 600 001</p>
+      </div>
+      <div class="modal-faq-item" style="margin-bottom:24px;background:var(--offwhite);border-radius:12px;padding:18px;border-left:4px solid var(--accent);">
+        <h4 style="font-size:0.9rem;font-weight:700;color:var(--navy);margin-bottom:6px;">🕐 Business Hours</h4>
+        <p style="font-size:0.85rem;color:var(--muted);">Mon – Sat: 10:00 AM to 8:30 PM<br>Sunday: 11:00 AM to 6:00 PM</p>
+      </div>
+      <h3 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:18px;">Send a Quick Enquiry</h3>
+      <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
+        <div class="form-group" style="margin-bottom:0;">
+          <label style="font-size:0.78rem;color:var(--muted);font-weight:600;display:block;margin-bottom:6px;">Name</label>
+          <input type="text" placeholder="Your name" style="width:100%;background:var(--offwhite);border:1.5px solid var(--light);border-radius:9px;padding:11px 14px;font-size:0.88rem;color:var(--text);outline:none;font-family:'DM Sans',sans-serif;">
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label style="font-size:0.78rem;color:var(--muted);font-weight:600;display:block;margin-bottom:6px;">Mobile</label>
+          <input type="tel" placeholder="+91 XXXXX XXXXX" style="width:100%;background:var(--offwhite);border:1.5px solid var(--light);border-radius:9px;padding:11px 14px;font-size:0.88rem;color:var(--text);outline:none;font-family:'DM Sans',sans-serif;">
+        </div>
+      </div>
+      <div style="margin-bottom:16px;">
+        <label style="font-size:0.78rem;color:var(--muted);font-weight:600;display:block;margin-bottom:6px;">Message</label>
+        <textarea rows="3" placeholder="How can we help you?" style="width:100%;background:var(--offwhite);border:1.5px solid var(--light);border-radius:9px;padding:11px 14px;font-size:0.88rem;color:var(--text);outline:none;font-family:'DM Sans',sans-serif;resize:vertical;"></textarea>
+      </div>
+      <button class="btn-submit" onclick="submitModalForm()">Send Message →</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" style="
+  position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(80px);
+  background:var(--navy); color:white; padding:14px 26px; border-radius:12px;
+  font-size:0.9rem; font-weight:600; z-index:99999; opacity:0;
+  transition:all 0.4s cubic-bezier(.4,0,.2,1); white-space:nowrap;
+  box-shadow:0 8px 32px rgba(10,31,68,0.38); border-left:4px solid var(--gold);
+">✅ Message sent! We'll get back to you soon.</div>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// Mobile menu
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('nav') && !e.target.closest('#mobileMenu'))
+    document.getElementById('mobileMenu').classList.remove('open');
+});
+
+// FAQ toggle
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Modal
+function openModal(type) {
+  document.getElementById('modal-' + type).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function handleOverlayClick(e, id) {
+  if (e.target === document.getElementById(id)) closeModal(id);
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => {
+      m.classList.remove('open'); document.body.style.overflow = '';
+    });
+  }
+});
+
+// Catalog filter
+function filterCatalog(cat, btn) {
+  document.querySelectorAll('.catalog-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.catalog-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// Form submit
+function submitForm() {
+  showToast();
+}
+function submitModalForm() {
+  closeModal('modal-contact');
+  setTimeout(showToast, 300);
+}
+function showToast() {
+  const t = document.getElementById('toast');
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  setTimeout(() => {
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%) translateY(80px)';
+  }, 3500);
+}
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
